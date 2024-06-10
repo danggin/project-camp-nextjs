@@ -23,6 +23,9 @@ export default function RootLayout({
           <Link href='/about' className='text-blue-500 underline'>
             About
           </Link>
+          <Link href='/blog' className='text-blue-500 underline'>
+            Blog
+          </Link>
         </div>
       </body>
     </html>
