@@ -13,14 +13,13 @@ export default function NotFound() {
 
   return (
     <>
-      <div className='flex flex-col items-center justify-center'>
+      <div className='flex flex-col items-center justify-center text-center min-h-screen'>
         <MdError className='text-[100px] text-rose-500' />
-        <span className='text-[40px] font-bold'>앗...!</span>
-        <span className='max-w-[350px] text-lg'>
-          이 페이지는 사라졌거나 다른 페이지로 변경되었어요.
-          <br />
-          주소를 다시 확인해 주세요.
-        </span>
+        <h1 className='text-[50px] font-bold'>...앗...</h1>
+        <p className='max-w-[300px] text-lg'>
+          이 페이지는 사라졌거나 다른 페이지로 변경되었어요. 주소를 다시 확인해
+          주세요.
+        </p>
         <div className='flex gap-4 m-4'>
           <button
             className='w-[95px] bg-gray-100 text-blue-500 rounded-md text-lg p-4'
