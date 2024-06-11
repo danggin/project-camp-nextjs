@@ -1,10 +1,10 @@
-import Header from "@/components/Header";
-import Banner from "@/components/Banner";
-import MovieArea from "@/components/MovieArea";
+import Header from '@/components/Header';
+import Banner from '@/components/Banner';
+import MovieArea from '@/components/MovieArea';
 
 const getMovies = async (type: string) => {
   const data = await (
-    await fetch("http://localhost:3000/api/movies?type=" + type)
+    await fetch('http://localhost:3000/api/movies?type=' + type)
   ).json();
   return data;
 };
@@ -21,21 +21,20 @@ export default async function Home() {
     { results: upcoming },
     { results: now_playing },
   ] = await Promise.all([
-    getMovies("popular"),
-    getMovies("top_rated"),
-    getMovies("upcoming"),
-    getMovies("now_playing"),
+    getMovies('popular'),
+    getMovies('top_rated'),
+    getMovies('upcoming'),
+    getMovies('now_playing'),
   ]);
 
-  console.log(upcoming);
   return (
     <>
       <Header />
       <Banner />
-      <MovieArea title={"POPULAR"} movies={popular} />
-      <MovieArea title={"TOP RATED"} movies={top_rated} />
-      <MovieArea title={"UPCOMING"} movies={upcoming} />
-      <MovieArea title={"NOW PLAYING"} movies={now_playing} />
+      <MovieArea title={'POPULAR'} movies={popular} />
+      <MovieArea title={'TOP RATED'} movies={top_rated} />
+      <MovieArea title={'UPCOMING'} movies={upcoming} />
+      <MovieArea title={'NOW PLAYING'} movies={now_playing} />
     </>
   );
 }
