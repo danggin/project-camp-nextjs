@@ -1,29 +1,26 @@
-import Header from '@/components/Header';
-import Banner from '@/components/Banner';
-import MovieArea from '@/components/MovieArea';
+import Header from "@/components/Header";
+import Banner from "@/components/Banner";
+import MovieArea from "@/components/MovieArea";
+import Loader from "@/components/Loader";
 
-const getMovies = async (type: string) => {
+export const getMovies = async (type: string, page: number) => {
   const data = await (
-    await fetch('http://localhost:3000/api/movies?type=' + type)
+    await fetch(
+      "http://localhost:3000/api/movies?type=" + type + "&page=" + page
+    )
   ).json();
   return data;
 };
 
-// window의 끝점 찾기
-
+// 끝점 파악하기
 export default async function Home() {
-  // const popular = await getMovies("popular");
-  // const top_rated = await getMovies("top_rated");
-  // const upcoming = await getMovies("upcoming");
-  // const now_playing = await getMovies("now_playing");
-
-  const { results: popular } = await getMovies('popular');
-
+  const { results: popular } = await getMovies("popular", 1);
   return (
     <>
       <Header />
       <Banner />
-      <MovieArea title={'POPULAR'} movies={popular} />
+      <MovieArea title={"POPULAR"} movies={popular} />
+      <Loader />
     </>
   );
 }

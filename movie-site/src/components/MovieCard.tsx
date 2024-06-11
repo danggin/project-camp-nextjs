@@ -2,8 +2,11 @@ import Image from "next/image";
 import { thumbnail01 } from "../../public/assets/assets";
 import { star } from "../../public/assets/assets";
 import { TMovie } from "./MovieArea";
+import React from "react";
 
-export default function MovieCard(props: TMovie) {
+let i = 1;
+function MovieCard(props: TMovie) {
+  console.log("movie card rendring : " + i++);
   const { title, poster_path, vote_average, release_date } = props;
   return (
     <>
@@ -16,7 +19,7 @@ export default function MovieCard(props: TMovie) {
           className="rounded-md"
         />
         <div className="flex justify-between items-center font-bold mt-4 mb-2 text-lg">
-          <h4 className="">{title}</h4>
+          <h4 className="line-clamp-1">{title}</h4>
         </div>
         <div className="flex justify-between items-center text-sm text-gray-200">
           <div className="flex items-center gap-2 font-bold">
@@ -37,3 +40,4 @@ export default function MovieCard(props: TMovie) {
     </>
   );
 }
+export default React.memo(MovieCard);
