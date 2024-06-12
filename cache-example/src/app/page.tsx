@@ -1,5 +1,5 @@
+import UserList from '@/components/UserList';
 import FormAdd from '../components/FormAdd';
-import UserList from '../components/UserList';
 
 export default function Home() {
   return (
