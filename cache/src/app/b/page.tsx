@@ -1,4 +1,4 @@
-export default async function About() {
+export default async function Bpage() {
   const posts = await (
     await fetch("http://localhost:4000/posts", {
       next: {
@@ -6,11 +6,10 @@ export default async function About() {
       },
     })
   ).json();
-
   return (
     <>
-      <h1 className="text-2xl">About Pages</h1>
-      <h2 className="text-2xl">{new Date().toLocaleTimeString()}</h2>
+      <h1>B Pages</h1>
+      <h1>{new Date().toLocaleTimeString()}</h1>
       <pre>{JSON.stringify(posts, null, 2)}</pre>
     </>
   );

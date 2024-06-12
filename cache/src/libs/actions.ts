@@ -4,5 +4,4 @@ import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function clickHandler() {
   revalidateTag("posts");
-  revalidateTag("toods");
 }
