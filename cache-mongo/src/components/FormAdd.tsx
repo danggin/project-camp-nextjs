@@ -1,8 +1,9 @@
-"use client";
-import { insertMogoDB, serverAction } from "@/libs/action";
-import { useRef } from "react";
+'use client';
+import { insertMogoDB } from '@/libs/action';
+import { useRef } from 'react';
 export default function FormAdd() {
   const ref = useRef<HTMLFormElement>(null);
+
   return (
     <>
       <form
@@ -11,21 +12,21 @@ export default function FormAdd() {
           await insertMogoDB(formData);
           ref.current?.reset();
         }}
-        className="w-[300px]"
+        className='w-[300px]'
       >
         <input
-          type="text"
-          name="name"
-          placeholder="Enter User Name"
-          className="border border-gray-300 rounded-md p-2 block mb-4 w-full"
+          type='text'
+          name='name'
+          placeholder='Enter User Name'
+          className='border border-gray-300 rounded-md p-2 block mb-4 w-full'
         />
         <input
-          type="email"
-          name="email"
-          placeholder="Enter User Email"
-          className="border border-gray-300 rounded-md p-2 block mb-4 w-full"
+          type='email'
+          name='email'
+          placeholder='Enter User Email'
+          className='border border-gray-300 rounded-md p-2 block mb-4 w-full'
         />
-        <button className="bg-blue-500 text-white p-2 rounded-md mt-2 block w-full">
+        <button className='bg-blue-500 text-white p-2 rounded-md mt-2 block w-full'>
           Save
         </button>
       </form>

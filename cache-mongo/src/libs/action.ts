@@ -1,9 +1,8 @@
-"use server";
+'use server';
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import connectDB from "./db";
-import { User } from "./model";
+import { revalidatePath } from 'next/cache';
+import connectDB from './db';
+import { User } from './model';
 
 export async function fetchMongoDB() {
   connectDB();
@@ -15,8 +14,8 @@ export async function fetchMongoDB() {
 export async function insertMogoDB(formData: FormData) {
   connectDB();
 
-  const name = formData.get("name");
-  const email = formData.get("email");
+  const name = formData.get('name');
+  const email = formData.get('email');
 
   const newUser = new User({
     name,
@@ -24,39 +23,16 @@ export async function insertMogoDB(formData: FormData) {
   });
 
   newUser.save();
-  revalidatePath("/");
+  revalidatePath('/');
 }
 
 export async function deleteMongoDB(formData: FormData) {
   connectDB();
-  const id = formData.get("id");
+  const id = formData.get('id');
   await User.findByIdAndDelete(id);
-  revalidatePath("/");
-}
-
-export const serverAction = async (formData: FormData) => {
-  const response = await fetch("http://localhost:4000/users", {
-    method: "POST",
-    body: JSON.stringify(Object.fromEntries(formData)),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (response.ok) {
-    revalidatePath("/");
-    redirect("/");
-  }
-};
-
-export async function deleteUser(formData: FormData) {
-  const id = formData.get("id");
-  await fetch("http://localhost:4000/users/" + id, {
-    method: "DELETE",
-  });
-  revalidatePath("/");
+  revalidatePath('/');
 }
 
 export async function invalidData() {
-  revalidatePath("/");
+  revalidatePath('/');
 }
