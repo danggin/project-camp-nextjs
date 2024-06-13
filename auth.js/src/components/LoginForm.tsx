@@ -1,4 +1,4 @@
-import { login } from '@/lib/action';
+import { githubLogin, login } from '@/lib/action';
 
 export default function LoginForm() {
   return (
@@ -10,7 +10,10 @@ export default function LoginForm() {
           name='password'
           placeholder='Enter Your Password'
         />
-        <button>Login</button>
+        <button>로그인</button>
+      </form>
+      <form action={githubLogin}>
+        <button>Github로 로그인</button>
       </form>
     </>
   );
