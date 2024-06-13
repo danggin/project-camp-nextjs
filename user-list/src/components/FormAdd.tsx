@@ -1,19 +1,19 @@
 'use client';
+
 import { addUser } from '@/libs/action';
 import { useRef } from 'react';
+import { useFormState } from 'react-dom';
+
 export default function FormAdd() {
+  const [state, formAction] = useFormState(addUser, {
+    success: false,
+    message: '',
+  });
   const ref = useRef<HTMLFormElement>(null);
 
   return (
     <>
-      <form
-        ref={ref}
-        action={async (formData) => {
-          await addUser(formData);
-          ref.current?.reset();
-        }}
-        className='w-[300px]'
-      >
+      <form ref={ref} action={formAction} className='w-[300px]'>
         <input
           type='text'
           name='name'
@@ -30,6 +30,13 @@ export default function FormAdd() {
           Save
         </button>
       </form>
+      {state.success && (
+        <h1
+          className={`${state.success && 'text-blue-500'} ${!state.success && 'text-rose-500'} `}
+        >
+          {state.message}
+        </h1>
+      )}
     </>
   );
 }

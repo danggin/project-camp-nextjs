@@ -11,11 +11,18 @@ export async function fetchUser() {
   return user;
 }
 
-export async function addUser(formData: FormData) {
+export async function addUser(
+  prevState: { success: boolean; message: string },
+  formData: FormData
+) {
   connectDB();
 
   const name = formData.get('name');
   const email = formData.get('email');
+
+  if (email === '' || name === '') {
+    return { success: false, message: 'Please fill in the form.' };
+  }
 
   const newUser = new User({
     name,
@@ -24,6 +31,8 @@ export async function addUser(formData: FormData) {
 
   newUser.save();
   revalidatePath('/');
+
+  return { success: true, message: 'Your infoemation is saved.' };
 }
 
 export async function deleteUser(formData: FormData) {
