@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-export const serverAction = async (formData: formData) => {
+export const serverAction = async (formData: FormData) => {
   const response = await fetch('http://localhost:4000/users', {
     method: 'POST',
     body: JSON.stringify(Object.fromEntries(formData)),
@@ -18,7 +18,7 @@ export const serverAction = async (formData: formData) => {
   }
 };
 
-export const deleteUser = async (formData: formData) => {
+export const deleteUser = async (formData: FormData) => {
   const id = formData.get('id');
   await fetch('http://localhost:4000/users/' + id, {
     method: 'DELETE',
