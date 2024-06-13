@@ -1,4 +1,4 @@
-import { deleteUser } from '@/libs/action';
+import { deleteUser } from '@/lib/action';
 
 type TUser = {
   _id: string;

@@ -1,4 +1,4 @@
-import connectDB from '@/libs/db';
+import connectDB from '@/lib/db';
 import FormAdd from '@/components/FormAdd';
 import UserList from '@/components/UserList';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { addUser } from '@/libs/action';
+import { addUser } from '@/lib/action';
 import { useRef } from 'react';
 import { useFormState } from 'react-dom';
 
