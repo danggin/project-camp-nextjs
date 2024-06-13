@@ -1,9 +1,5 @@
 import { deleteMongoDB, fetchMongoDB } from '@/libs/action';
 
-async function fetchUsers() {
-  return await (await fetch('http://localhost:4000/users')).json();
-}
-
 export default async function UserList() {
   const users = await fetchMongoDB();
 
