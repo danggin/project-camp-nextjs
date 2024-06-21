@@ -75,7 +75,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       } else {
         return true;
       }
-      return false;
     },
     async jwt({ token, user }: { token: any; user: any }) {
       console.log('jwt', token, user);
